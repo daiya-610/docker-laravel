@@ -43,7 +43,22 @@ docker compose exec app php -v
 docker compose exec web nginx -v
 ```
 
+***
+4. Laravelをインストールする
+```
+docker compose exec app bash
+composer create-project --prefer-dist "laravel/laravel=9.*" .
+chmod -R 777 storage bootstrap/cache
+php artisan -V
+
+exit
+```
+
+***
+
 ## URL
+1. ローカル
+http://localhost:8080/
 
 ## 内容
 ### ウェブサーバー(web)コンテナを作る
