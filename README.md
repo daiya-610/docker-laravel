@@ -33,6 +33,21 @@ docker compose down
 exit
 ```
 
+1-7. コンテナの停止、ネットワーク・名前付きボリューム・コンテナイメージ、未定義コンテナを削除
+```
+docker compose down --rmi all --volumes --remove-orphans
+```
+
+1-8. .envの「APP_KEY=」の値生成
+```
+php artisan key:generate
+```
+
+1-9. public/storage から storage/app/public へのシンボリックリンクを張る
+```
+php artisan storage:link
+```
+
 ### 2.実行関係
 2-1. マイグレーション実行
 ```
