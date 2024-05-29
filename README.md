@@ -98,13 +98,34 @@ docker compose exec db mysql -V
 ```
 
 3-4. ネットワークの詳細を確認
+- docker network inspect 「docker network listで表示されたNAME」
 ```
 docker network list
 
 docker network inspect docker-laravel-handson_default
 ```
-- docker network inspect 「docker network listで表示されたNAME」
 
+3-5. Laravelのログをコンテナログに表示する
+- src/.env を修正する。
+```env:src/.env
+LOG_CHANNEL=stderr
+```
+- src/routes/web.php に追記する。
+```php:src/routes/web.php
+Route::get('/', function () {
+    logger('welcome route.');
+    return view('welcome');
+});
+```
+
+3-6. ログウォッチ
+```
+docker compose logs
+# -f でログウォッチ
+ docker compose logs -f
+# サービス名を指定してログを表示
+docker compose logs -f app
+```
 
 ### 5.インストール関係
 ***
